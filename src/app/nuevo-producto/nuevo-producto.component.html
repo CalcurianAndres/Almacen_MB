@@ -1,0 +1,70 @@
+<div class="modal" [ngClass]="{'is-active':showModal}">
+    <div class="modal-background" (click)="onCloseModal.emit()"></div>
+    <div class="modal-content" style="width: 800px;">
+        <div class="container">
+            <mat-card appearance="outlined">
+                <mat-toolbar color="primary">
+                    <span>Formulario de Producto</span>
+                </mat-toolbar>
+
+                <form [formGroup]="productForm" (ngSubmit)="onSubmit()" style="max-width: 800px; margin: 20px auto;">
+                    <mat-form-field appearance="fill">
+                        <input matInput formControlName="codigo" required />
+                        <mat-label>Código</mat-label>
+                        <mat-error
+                            *ngIf="productForm.get('codigo')?.hasError('required') && productForm.get('codigo')?.touched">
+                            Código es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                      
+                    <mat-form-field appearance="fill">
+                        <input matInput formControlName="nombre" required />
+                        <mat-label>Nombre</mat-label>
+                        <mat-error
+                            *ngIf="productForm.get('nombre')?.hasError('required') && productForm.get('nombre')?.touched">
+                            Nombre es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                      
+                    <mat-form-field appearance="fill">
+                        <input matInput formControlName="marca" required />
+                        <mat-label>Marca</mat-label>
+                        <mat-error
+                            *ngIf="productForm.get('marca')?.hasError('required') && productForm.get('marca')?.touched">
+                            Marca es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+
+                    <mat-form-field appearance="fill">
+                        <input matInput formControlName="proveedor" required />
+                        <mat-label>Proveedor</mat-label>
+                        <mat-error
+                            *ngIf="productForm.get('proveedor')?.hasError('required') && productForm.get('proveedor')?.touched">
+                            Proveedor es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                      
+                    <mat-form-field appearance="fill">
+                        <input matInput type="number" formControlName="precio" required />
+                        <mat-label>Precio</mat-label>
+                        <mat-error
+                            *ngIf="productForm.get('precio')?.hasError('required') && productForm.get('precio')?.touched">
+                            Precio es <strong>requerido</strong>
+                        </mat-error>
+                        <mat-error
+                            *ngIf="productForm.get('precio')?.hasError('min') && productForm.get('precio')?.touched">
+                            Precio debe ser mayor que <strong>0</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+
+                    <button mat-raised-button color="primary" type="submit">Enviar</button>
+                </form>
+
+
+
+            </mat-card>
+        </div>
+    </div>
+</div>
